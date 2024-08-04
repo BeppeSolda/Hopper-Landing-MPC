@@ -66,9 +66,9 @@ def parse_lqr_traj_parameters(filename):
     q = np.reshape(q, (-1, 1))
     r = np.reshape(r, (-1, 1))
 
-    ur = np.zeros((1, num_samples))
+    #ur = np.zeros((1, num_samples))
 
-    U_ref = np.vstack((Fx, Fy, Fz, ur)).T
+    U_ref = np.vstack((Fx, Fy, Fz)).T
 
     X_ref = np.hstack((x, y, z, quaternions.T, vx, vy, vz, p, q, r))
 
@@ -114,6 +114,7 @@ def rotation_matrix_to_quaternion(R):
 
 # Example usage
 filename = 'lqr_traj_parameters_vertTilted.txt'
+#filename = 'infinity_traj_parameters.txt'
 U_ref, X_ref, t = parse_lqr_traj_parameters(filename)
 
 # Now U_ref and X_ref are ready for use in further computations or visualizations

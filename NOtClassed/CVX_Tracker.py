@@ -230,7 +230,7 @@ for k in range(Nt - 1):
     #print(error_vect.at[:,k])
     u = u.at[:, k].set(u_opt ) 
    
-    x = x.at[:, k + 1].set(rocket_dynamics_rk4(noisy_x, u[:, k], m, J_B, r_T_B, g_I, h))
+    x = x.at[:, k + 1].set(rocket_dynamics_rk4(x[:,k], u[:, k], m, J_B, r_T_B, g_I, h))
  
 
        

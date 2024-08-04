@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def plot_results_tracker(t_new, x, X_ref_new, u, U_ref_new):
+def plot_results_tracker(t_new, x, X_ref_new, u, U_ref_new, error_vect):
     X_ref = X_ref_new
     U_ref = U_ref_new
     zeros_row = np.zeros((1, 3))
@@ -88,7 +88,7 @@ def plot_results_tracker(t_new, x, X_ref_new, u, U_ref_new):
     axs[2].grid(True)
     
     # Plot control inputs
-    fig, axs = plt.subplots(4, 1)
+    fig, axs = plt.subplots(3, 1)
     axs[0].plot(t_new, u[0, :], label='Fx')
     axs[0].plot(t_new, U_ref[0, :], label='Fx ref')
     axs[0].set_ylabel('u_1')
@@ -113,12 +113,101 @@ def plot_results_tracker(t_new, x, X_ref_new, u, U_ref_new):
     axs[2].legend()
     axs[2].grid(True)
     
-    axs[3].plot(t_new, u[3, :], label='u4')
-    axs[3].plot(t_new, U_ref[3, :], label='u4 ref')
-    axs[3].set_ylabel('u4')
-    axs[3].grid(True)
+   
     
     # Plot quaternions
     fig, axs = plt.subplots(4, 1)
-    axs[0]
+    axs[0].plot(t_new, x[3, :], label='q0')
+    axs[0].plot(t_new, X_ref[3, :], 'r--', label='q0 ref')
+    axs[0].set_ylabel('q0')
+    axs[0].legend()
+    axs[0].grid(True)
+    
+    axs[1].plot(t_new, x[4, :], label='q1')
+    axs[1].plot(t_new, X_ref[4, :], 'g--', label='q1 ref')
+    axs[1].set_ylabel('q1')
+    axs[1].legend()
+    axs[1].grid(True)
+    
+    axs[2].plot(t_new, x[5, :], label='q2')
+    axs[2].plot(t_new, X_ref[5, :], 'b--', label='q2 ref')
+    axs[2].set_ylabel('r')
+    axs[2].legend()
+    axs[2].grid(True)
+
+    axs[3].plot(t_new, x[6, :], label='q3')
+    axs[3].plot(t_new, X_ref[6, :], 'b--', label='q3 ref')
+    axs[3].set_ylabel('r')
+    axs[3].legend()
+    axs[3].grid(True)
+
+
+    fig, axs = plt.subplots(8, 2)
+    axs[0,0].plot(t_new, error_vect[0, :], label='x')
+    axs[0,0].set_ylabel('x')
+    axs[0,0].grid(True)
+    
+    axs[1,0].plot(t_new, error_vect[1, :], label='y')
+    axs[1,0].set_ylabel('y')
+    axs[1,0].grid(True)
+    
+    axs[2,0].plot(t_new, error_vect[2, :], label='z')
+    axs[2,0].set_ylabel('z')
+    axs[2,0].grid(True)
+
+  
+    axs[3,0].plot(t_new, error_vect[3, :], label='q0')
+    axs[3,0].set_ylabel('q0')
+    axs[3,0].grid(True)
+    
+    axs[4,0].plot(t_new, error_vect[4, :], label='q1')
+    axs[4,0].set_ylabel('q1')
+    axs[4,0].grid(True)
+    
+    axs[5,0].plot(t_new, error_vect[5, :], label='q2')
+    axs[5,0].set_ylabel('q2')
+    axs[5,0].grid(True)
+
+    axs[6,0].plot(t_new, error_vect[6, :], label='q3')
+    axs[6,0].set_ylabel('q3')
+    axs[6,0].grid(True)
+
+    axs[7,0].plot(t_new, error_vect[15, :], label='uz')
+    axs[7,0].set_ylabel('uz')
+    axs[7,0].grid(True)
+
+    axs[0,1].plot(t_new, error_vect[7, :], label='vx')
+    axs[0,1].set_ylabel('vx')
+    axs[0,1].grid(True)
+    
+    axs[1,1].plot(t_new, error_vect[8, :], label='vy')
+    axs[1,1].set_ylabel('vy')
+    axs[1,1].grid(True)
+    
+    axs[2,1].plot(t_new, error_vect[9, :], label='vz')
+    axs[2,1].set_ylabel('vz')
+    axs[2,1].grid(True)
+
+    axs[3,1].plot(t_new, error_vect[10, :], label='p')
+    axs[3,1].set_ylabel('p')
+    axs[3,1].grid(True)
+    
+    axs[4,1].plot(t_new, error_vect[11, :], label='q')
+    axs[4,1].set_ylabel('q')
+    axs[4,1].grid(True)
+    
+    axs[5,1].plot(t_new, error_vect[12, :], label='r')
+    axs[5,1].set_ylabel('r')
+    axs[5,1].grid(True)
+
+    axs[6,1].plot(t_new, error_vect[13, :], label='ux')
+    axs[6,1].set_ylabel('ux')
+    axs[6,1].grid(True)
+    
+    axs[7,1].plot(t_new, error_vect[14, :], label='uy')
+    axs[7,1].set_ylabel('uy')
+    axs[7,1].grid(True)
+    
+    
+
     plt.show()

@@ -26,10 +26,20 @@ I = np.eye(3)
 
 # Vertically stack the zeros_row and the identity matrix
 H = np.vstack((zeros_row, I))
-
+cos_delta_max = np.cos(np.deg2rad(15))
+max_gimbal = 15
+tan_delta_max = np.tan(np.deg2rad(max_gimbal))
 # MPC parameters
-N_mpc = 5
+N_mpc = 50
 Q = jnp.identity(13)
 R = jnp.identity(3)
 Max_Thrust = 2*m*g  # Maximum thrust value
 Min_Thrust = 0.25*Max_Thrust
+
+tr_radius = 5
+
+rho_0 = 0.0
+rho_1 = 0.25
+rho_2 = 0.9
+alpha = 2.0
+beta = 3.2

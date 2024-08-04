@@ -113,8 +113,8 @@ def rotation_matrix_to_quaternion(R):
     return np.array([q0, q1, q2, q3])
 
 # Example usage
-#filename = 'lqr_traj_parameters_vertTilted.txt'
-filename = 'infinity_traj_parameters.txt'
+filename = 'lqr_traj_parameters_vertTilted.txt'
+#filename = 'infinity_traj_parameters.txt'
 U_ref, X_ref, t = parse_lqr_traj_parameters(filename)
 
 # Now U_ref and X_ref are ready for use in further computations or visualizations
